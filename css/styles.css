@@ -1,0 +1,8 @@
+.timer{
+    outline: 1px solid slategray;
+    width: 1000px;
+    margin: 0 auto;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+}
