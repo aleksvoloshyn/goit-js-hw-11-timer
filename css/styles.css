@@ -1,8 +1,19 @@
-.timer{
-    outline: 1px solid slategray;
-    width: 1000px;
-    margin: 0 auto;
-    font-size: 60px;
-    display: flex;
-    justify-content: center;
+.timer {
+  outline: 1px solid slategray;
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 60px;
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.value {
+  margin: 10px;
+  color: salmon;
+}
+
+.name {
+  text-align: center;
+  margin-top: 40px;
 }

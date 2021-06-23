@@ -1,26 +1,30 @@
-// new CountdownTimer({
-//   selector: '#timer-1',
-//   targetDate: new Date('Jul 17, 2019'),
-// });
+import { CountdownTimer } from './classTimer.js';
 
+const timer1 = new CountdownTimer({
+  selector: '#timer-1',
+  targetDate: new Date('Jul 17, 2021'),
+  onTick: refreshTimerMarkup,
+});
 
-// const days = Math.floor(time / (1000 * 60 * 60 * 24));
-// const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-// const mins = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
-// const secs = Math.floor((time % (1000 * 60)) / 1000);
+const timerEl = document.querySelector(timer1.selector);
 
 const refs = {
-  daysEl: document.querySelector('span[data-value="days"]'),
-  hoursEl: document.querySelector('span[data-value="hours"]'),
-  minsEl: document.querySelector('span[data-value="mins"]'),
-  secsEl: document.querySelector('span[data-value="secs"]'),
+  daysEl: timerEl.querySelector('[data-value="days"]'),
+  hoursEl: timerEl.querySelector('[data-value="hours"]'),
+  minsEl: timerEl.querySelector('[data-value="mins"]'),
+  secsEl: timerEl.querySelector('[data-value="secs"]'),
 };
 
-class CountdownTimer {
-
+function refreshTimerMarkup(timer) {
+  const { days, hours, mins, secs } = timer;
+  refs.daysEl.textContent = days;
+  refs.hoursEl.textContent = addZerro(hours);
+  refs.minsEl.textContent = addZerro(mins);
+  refs.secsEl.textContent = addZerro(secs);
 }
 
-const CountdownTimerNew = new CountdownTimer({
-  selector: '#timer-1',
-  targetDate: new Date('Jul 17, 2019'),
-});
+function addZerro(value) {
+  return value < 10 ? '0' + value : value;
+}
+
+timer1.start();
